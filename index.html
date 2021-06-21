@@ -13,7 +13,11 @@
 </body>
 <script>
 
-
+console.log(window.location.href.split('?'))
+var a = window.location.href.split('=');
+console.log(a)
+var id = a[a.length-1];
+console.log(id)
 //PASS ALL THE SYMBOLS 
 var sym = exchangeInfo.symbols,markup='';
 sym.forEach(d => {
@@ -23,7 +27,19 @@ document.getElementById('pairs').innerHTML = markup;
   
 LoadCharts();    
 function LoadCharts(){
-    let symbol = document.getElementById('pairs').value;
+    var a = window.location.href.split('=');
+console.log(a)
+var id = a[a.length-1];
+console.log(id)
+let symbol = id
+var type = a[a.length-2];
+var c = type.split('?')
+
+var st = 1;
+if(c[0]==='line'){
+    st=2;
+}
+    //let symbol = document.getElementById('pairs').value;
     //RENDER CHART
     new TradingView.widget(
       {
@@ -32,16 +48,16 @@ function LoadCharts(){
   "interval": "5",
   "timezone": "Asia/Kolkata",
   "theme": "Light",
-  "style": "1",
+  "style": st,
   "locale": "in",
   "toolbar_bg": "#f1f3f6",
   "enable_publishing": false,
   "allow_symbol_change": true,
-  "studies": [
+  /* "studies": [
     "AwesomeOscillator@tv-basicstudies",
     "MACD@tv-basicstudies",
     "RSI@tv-basicstudies"
-  ],
+  ], */
   "container_id": "tvchart"
     });
 }
