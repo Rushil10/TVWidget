@@ -4,11 +4,6 @@
     <script src="exchangeInfo.js"></script>
 </head>
 <body>
-<select onChange="LoadCharts();" id="pairs">
-<!--    <option value="BTCUSDT">BTCUSDT</option>
-    <option value="ETHUSDT">ETHUSDT</option>-->
-</select>
-<br>
 <div class="tradingview-widget-container" id="tvchart"></div>
 </body>
 <script>
@@ -23,7 +18,6 @@ var sym = exchangeInfo.symbols,markup='';
 sym.forEach(d => {
     markup += '<option value="' + d.symbol + '">' + d.symbol + '</option>';
 });
-document.getElementById('pairs').innerHTML = markup;
   
 LoadCharts();    
 function LoadCharts(){
